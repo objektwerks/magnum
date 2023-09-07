@@ -19,6 +19,7 @@ class StoreTest extends AnyFunSuite:
     println(s"*** Update Todo: $todo")
     assert(updated)
 
+    store.count()
     val todos = store.listTodos()
     println(s"*** List Todos: ${todos.toString}")
     assert( todos.length == 1 )

@@ -24,9 +24,7 @@ final class Store(conf: Config):
 
   def count(): Long =
     connect(ds):
-      val count = repo.count
-      println(s"Database count: $count")
-      count
+      repo.count
 
   def addTodo(todo: TodoBuilder): Todo =
     transact(ds):

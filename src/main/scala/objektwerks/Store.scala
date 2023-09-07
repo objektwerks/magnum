@@ -17,6 +17,9 @@ final class Store(conf: Config):
     transact(ds):
       repo.insertReturning(todo)
 
-  def updateTodo(todo: Todo): Boolean = ???
+  def updateTodo(todo: Todo): Boolean =
+    transact(ds):
+      repo.update(todo)
+      true
 
   def listTodos(): Seq[Todo] = ???

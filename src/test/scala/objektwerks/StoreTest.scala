@@ -23,7 +23,7 @@ class StoreTest extends AnyFunSuite with Matchers:
     updated shouldBe true
 
     val count = store.count()
-    println(s"*** Todo count should be 1: $count") // If count == 0, H2 and/or Magnum are failing.
+    println(s"*** Todo count should be 1: $count but it's 0!")
 
     val todos = store.listTodos()
     println(s"*** List Todos: ${todos.toString}")

@@ -9,3 +9,9 @@ final class Store(conf: Config):
   ds.setURL(conf.getString("url"))
   ds.setUser(conf.getString("user"))
   ds.setPassword(conf.getString("password"))
+
+  def addTodo(todo: Todo): Int = ???
+
+  def updateTodo(todo: Todo): Boolean = ???
+
+  def listTodos(): Seq[Todo] = ???

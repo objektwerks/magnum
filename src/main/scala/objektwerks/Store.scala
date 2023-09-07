@@ -29,13 +29,11 @@ final class Store(conf: Config):
 
   val repo = TodoRepo()
 
-  def toDataSource(jdbcDs: JdbcDataSource): DataSource = jdbcDs.asInstanceOf[DataSource]
-
-  def withRepeatableRead(connection: Connection): Unit =
-      connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ)
+  private def withRepeatableRead(connection: Connection): Unit =
+    connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ)
 
   def count(): Long =
-    transact(ds):
+    transact(ds, withRepeatableRead):
       repo.count
 
   def addTodo(todo: TodoBuilder): Todo =
@@ -48,5 +46,5 @@ final class Store(conf: Config):
       true
 
   def listTodos(): Vector[Todo] =
-    transact(ds):
+    transact(ds, withRepeatableRead):
       repo.findAll

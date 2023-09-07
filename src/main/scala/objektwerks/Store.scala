@@ -7,9 +7,9 @@ import org.h2.jdbcx.JdbcDataSource
 
 final class Store(conf: Config):
   val ds = JdbcDataSource()
-  val url = conf.getString("url")
-  val user = conf.getString("user")
-  val password = conf.getString("password")
+  val url = conf.getString("ds.url")
+  val user = conf.getString("ds.user")
+  val password = conf.getString("ds.password")
 
   println(s"*** url: $url")
   println(s"*** user: $user")

@@ -19,6 +19,10 @@ final class Store(conf: Config):
   ds.setUser(user)
   ds.setPassword(password)
 
+  val connection = ds.getConnection()
+  println( s"*** Connection is valid: ${connection.isValid(0)}")
+  connection.close()
+
   val repo = TodoRepo()
   count() // Connect to database.
 

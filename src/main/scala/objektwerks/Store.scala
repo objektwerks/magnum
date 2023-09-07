@@ -7,9 +7,17 @@ import org.h2.jdbcx.JdbcDataSource
 
 final class Store(conf: Config):
   val ds = JdbcDataSource()
-  ds.setURL(conf.getString("url"))
-  //ds.setUser(conf.getString("user"))
-  //ds.setPassword(conf.getString("password"))
+  val url = conf.getString("url")
+  val user = conf.getString("user")
+  val password = conf.getString("password")
+
+  println(s"url: $url")
+  println(s"user: $user")
+  println(s"password: $password")
+
+  ds.setURL(url)
+  ds.setUser(user)
+  ds.setPassword(password)
 
   val repo = TodoRepo()
 

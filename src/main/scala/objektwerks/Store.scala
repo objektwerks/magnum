@@ -20,6 +20,13 @@ final class Store(conf: Config):
   ds.setPassword(password)
 
   val repo = TodoRepo()
+  count()
+
+  def count(): Long =
+    connect(ds):
+      val count = repo.count
+      println(s"Database count: $count")
+      count
 
   def addTodo(todo: TodoBuilder): Todo =
     transact(ds):

@@ -1,7 +1,11 @@
 package objektwerks
 
-import com.augustnagro.magnum.{connect, transact}
+import com.augustnagro.magnum.transact
 import com.typesafe.config.Config
+
+import java.sql.Connection
+
+import javax.sql.DataSource
 
 import org.h2.jdbcx.JdbcDataSource
 
@@ -25,8 +29,13 @@ final class Store(conf: Config):
 
   val repo = TodoRepo()
 
+  def toDataSource(jdbcDs: JdbcDataSource): DataSource = jdbcDs.asInstanceOf[DataSource]
+
+  def withRepeatableRead(connection: Connection): Unit =
+      connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ)
+
   def count(): Long =
-    connect(ds):
+    transact(ds):
       repo.count
 
   def addTodo(todo: TodoBuilder): Todo =
@@ -39,5 +48,5 @@ final class Store(conf: Config):
       true
 
   def listTodos(): Vector[Todo] =
-    connect(ds):
+    transact(ds):
       repo.findAll

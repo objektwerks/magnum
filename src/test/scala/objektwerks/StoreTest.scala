@@ -9,14 +9,13 @@ class StoreTest extends AnyFunSuite {
   val store = Store(conf)
 
   test("store") {
-    val todo = Todo(task = "wash car")
-    val id = store.addTodo(todo)
-    println(s"*** Id = $id")
-    assert( id > 0 )
+    val todoBuilder = TodoBuilder(task = "wash car")
+    val todo = store.addTodo(todoBuilder)
+    println(s"*** Todo id = ${todo.id}")
+    assert( todo.id > 0 )
 
-    val todoWithId = todo.copy(id = id)
-    println(s"*** Todo = $todoWithId")
-    store.updateTodo(todoWithId.copy(task = "wash and dry car"))
+    val result = store.updateTodo(todo.copy(task = "wash and dry car"))
+    assert(result)
     
     val todos = store.listTodos()
     println(s"*** Todos = ${todos.toString}")

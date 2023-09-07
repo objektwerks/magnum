@@ -24,7 +24,7 @@ final class Store(conf: Config):
   connection.close()
 
   val repo = TodoRepo()
-  
+
   def count(): Long =
     connect(ds):
       repo.count

@@ -34,4 +34,4 @@ final class Performance() extends LazyLogging:
   }
 
   @Benchmark
-  def listTodos(): Seq[Todo] = store.listTodos()
+  def listTodos(): Vector[Todo] = store.listTodos()

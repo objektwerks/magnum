@@ -6,13 +6,7 @@ import com.typesafe.scalalogging.LazyLogging
 import java.util.UUID
 import java.util.concurrent.TimeUnit
 
-import org.openjdk.jmh.annotations._
-
-object Performance extends LazyLogging {
-  val conf = ConfigFactory.load("app.conf")
-  val store = Store(conf)
-  logger.info("Database and Store initialized for performance testing.")
-}
+import org.openjdk.jmh.annotations.*
 
 @State(Scope.Thread)
 @BenchmarkMode(Array(Mode.AverageTime))
@@ -20,8 +14,10 @@ object Performance extends LazyLogging {
 @Warmup(iterations = 10)
 @Measurement(iterations = 10)
 @Fork(1)
-class Performance() {
-  import Performance.store
+final class Performance() extends LazyLogging:
+  val conf = ConfigFactory.load("app.conf")
+  val store = Store(conf)
+  logger.info("Database and Store initialized for performance testing.")
 
   var todo = Todo(0, "")
 
@@ -39,4 +35,3 @@ class Performance() {
 
   @Benchmark
   def listTodos(): Seq[Todo] = store.listTodos()
-}

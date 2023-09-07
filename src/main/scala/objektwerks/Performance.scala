@@ -17,9 +17,9 @@ import org.openjdk.jmh.annotations.*
 final class Performance() extends LazyLogging:
   val conf = ConfigFactory.load("app.conf")
   val store = Store(conf)
-  logger.info("Database and Store initialized for performance testing.")
-
   var todo = Todo(0, "")
+
+  logger.info("Database and Store initialized for performance testing.")
 
   @Benchmark
   def addTodo(): Todo =

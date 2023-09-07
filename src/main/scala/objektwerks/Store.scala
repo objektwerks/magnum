@@ -11,9 +11,9 @@ final class Store(conf: Config):
   val user = conf.getString("user")
   val password = conf.getString("password")
 
-  println(s"url: $url")
-  println(s"user: $user")
-  println(s"password: $password")
+  println(s"*** url: $url")
+  println(s"*** user: $user")
+  println(s"*** password: $password")
 
   ds.setURL(url)
   ds.setUser(user)

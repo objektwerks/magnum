@@ -9,4 +9,5 @@ final case class Todo(@Id id: Int, task: String) derives DbCodec
 
 final class TodoRepo extends Repo[TodoBuilder, Todo, Int]
 
-val info = TableInfo[TodoBuilder, Todo, Int]
+object Todo:
+  val info = TableInfo[TodoBuilder, Todo, Int]

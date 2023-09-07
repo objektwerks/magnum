@@ -28,7 +28,7 @@ final class Performance() extends LazyLogging:
     todo
 
   @Benchmark
-  def updateTodo(): Unit = {
+  def updateTodo(): Boolean = {
     todo = todo.copy(task = UUID.randomUUID.toString)
     store.updateTodo(todo)
   }

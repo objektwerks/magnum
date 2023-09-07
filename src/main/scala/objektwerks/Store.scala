@@ -1,6 +1,6 @@
 package objektwerks
 
-// import com.augustnagro.magnum.*
+import com.augustnagro.magnum.*
 import com.typesafe.config.Config
 
 import org.h2.jdbcx.JdbcDataSource
@@ -11,7 +11,11 @@ final class Store(conf: Config):
   ds.setUser(conf.getString("user"))
   ds.setPassword(conf.getString("password"))
 
-  def addTodo(todo: Todo): Int = ???
+  val repo = TodoRepo()
+
+  def addTodo(todo: TodoBuilder): Todo =
+    transact(ds):
+      repo.insertReturning(todo)
 
   def updateTodo(todo: Todo): Boolean = ???
 

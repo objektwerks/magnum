@@ -5,10 +5,10 @@ import com.typesafe.config.ConfigFactory
 import org.scalatest.funsuite.AnyFunSuite
 
 class StoreTest extends AnyFunSuite {
-  val conf = ConfigFactory.load("test.conf")
-  val store = Store(conf)
-
   test("store") {
+    val conf = ConfigFactory.load("test.conf")
+    val store = Store(conf)
+
     val todoBuilder = TodoBuilder(task = "wash car")
     val todo = store.addTodo(todoBuilder)
     println(s"*** Add Todo: $todo")

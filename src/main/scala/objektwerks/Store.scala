@@ -1,6 +1,6 @@
 package objektwerks
 
-import com.augustnagro.magnum.*
+import com.augustnagro.magnum.{connect, transact}
 import com.typesafe.config.Config
 
 import org.h2.jdbcx.JdbcDataSource

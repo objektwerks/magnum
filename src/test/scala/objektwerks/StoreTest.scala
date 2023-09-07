@@ -23,7 +23,7 @@ class StoreTest extends AnyFunSuite with Matchers:
     updated shouldBe true
 
     val count = store.count()
-    println(s"*** Todo count should be 1: $count but it's 0!")
+    println(s"*** Todo count should be 1 - but it's $count! Why?")
 
     val todos = store.listTodos()
     println(s"*** List Todos: ${todos.toString}")

@@ -19,7 +19,9 @@ class StoreTest extends AnyFunSuite:
     println(s"*** Update Todo: $todo")
     assert(updated)
 
-    store.count()
+    val count = store.count()
+    println(s"Todo count: $count") // If count == 0, H2 and/or Magnum are failing.
+
     val todos = store.listTodos()
     println(s"*** List Todos: ${todos.toString}")
     assert( todos.length == 1 )

@@ -1,7 +1,6 @@
 package objektwerks
 
 import com.typesafe.config.Config
-import io.getquill._
 
 object Store {
   def apply(conf: Config): Store = new Store(conf)

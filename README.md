@@ -30,3 +30,4 @@ Results
 Resources
 ---------
 * [Magnum Github](https://github.com/AugustNagro/magnum)
+* [Scala Days, Seattle, 2023](https://www.youtube.com/watch?v=iKNRS5b1zAY)

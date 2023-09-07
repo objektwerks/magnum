@@ -9,6 +9,8 @@ class StoreTest extends AnyFunSuite:
     val conf = ConfigFactory.load("test.conf")
     val store = Store(conf)
 
+    assert( store.count() == 0 )
+
     val todoBuilder = TodoBuilder(task = "wash car")
     var todo = store.addTodo(todoBuilder)
     println(s"*** Add Todo: $todo")
@@ -20,7 +22,7 @@ class StoreTest extends AnyFunSuite:
     assert(updated)
 
     val count = store.count()
-    println(s"*** Todo count: $count") // If count == 0, H2 and/or Magnum are failing.
+    println(s"*** Todo count should be 1: $count") // If count == 0, H2 and/or Magnum are failing.
 
     val todos = store.listTodos()
     println(s"*** List Todos: ${todos.toString}")

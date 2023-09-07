@@ -6,5 +6,5 @@ import com.augustnagro.magnum.{H2DbType, Id, ImmutableRepo, SqlNameMapper, Table
 final case class Todo(@Id id: Int = 0, task: String)
 
 object Todo:
-  val todoRepository = ImmutableRepo[Todo, Int]
-  val todoInfo = TableInfo[Todo, Todo, Int]
+  val repo = ImmutableRepo[Todo, Int]
+  val info = TableInfo[Todo, Todo, Int]

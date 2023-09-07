@@ -4,7 +4,7 @@ import com.typesafe.config.ConfigFactory
 
 import org.scalatest.funsuite.AnyFunSuite
 
-class StoreTest extends AnyFunSuite {
+class StoreTest extends AnyFunSuite:
   test("store") {
     val conf = ConfigFactory.load("test.conf")
     val store = Store(conf)
@@ -23,4 +23,3 @@ class StoreTest extends AnyFunSuite {
     println(s"*** List Todos: ${todos.toString}")
     assert( todos.length == 1 )
   }
-}

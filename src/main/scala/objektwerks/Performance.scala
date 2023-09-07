@@ -23,11 +23,13 @@ object Performance extends LazyLogging {
 class Performance() {
   import Performance.store
 
-  var todoBuilder = TodoBuilder(task = UUID.randomUUID.toString)
-  val todo = store.addTodo(todoBuilder)
+  var todo = Todo(0, "")
 
   @Benchmark
-  def addTodo(): Int = store.addTodo(Todo(task = UUID.randomUUID.toString))
+  def addTodo(): Todo =
+    val todoBuilder = TodoBuilder(task = UUID.randomUUID.toString)
+    todo = store.addTodo(todoBuilder)
+    todo
 
   @Benchmark
   def updateTodo(): Unit = {

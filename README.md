@@ -1,6 +1,6 @@
 Magnum
 ------
->Magnum feature tests with Scala 3.
+>Magnum feature tests with H2 and Scala 3.
 
 Warning
 -------

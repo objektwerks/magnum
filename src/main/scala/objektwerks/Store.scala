@@ -5,8 +5,6 @@ import com.typesafe.config.Config
 
 import java.sql.Connection
 
-import javax.sql.DataSource
-
 import org.h2.jdbcx.JdbcDataSource
 
 final class Store(conf: Config):

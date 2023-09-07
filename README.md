@@ -2,6 +2,10 @@ Magnum
 ------
 >Magnum feature tests with Scala 3.
 
+Warning
+-------
+>Magnum findAll does not currently work with H2.
+
 Build
 -----
 1. sbt clean compile

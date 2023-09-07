@@ -22,4 +22,6 @@ final class Store(conf: Config):
       repo.update(todo)
       true
 
-  def listTodos(): Seq[Todo] = ???
+  def listTodos(): Seq[Todo] =
+    connect(ds):
+      repo.findAll

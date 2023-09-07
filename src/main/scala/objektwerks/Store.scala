@@ -20,7 +20,7 @@ final class Store(conf: Config):
   ds.setPassword(password)
 
   val repo = TodoRepo()
-  count()
+  count() // Connect to database.
 
   def count(): Long =
     connect(ds):

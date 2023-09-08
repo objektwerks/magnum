@@ -6,6 +6,8 @@ Warning
 -------
 >Magnum findAll does not currently work with H2.
 
+>**See** [Issue 17](https://github.com/AugustNagro/magnum/issues/17)
+
 Build
 -----
 1. sbt clean compile

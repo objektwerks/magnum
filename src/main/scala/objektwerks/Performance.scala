@@ -11,7 +11,7 @@ import org.openjdk.jmh.annotations.*
 object Performance extends LazyLogging {
   val conf = ConfigFactory.load("app.conf")
   val store = Store(conf)
-  logger.info("Database and Store initialized for performance testing.")
+  logger.info("*** Database and Store initialized for performance testing.")
 }
 
 @State(Scope.Thread)

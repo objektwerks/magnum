@@ -8,18 +8,22 @@ import java.util.concurrent.TimeUnit
 
 import org.openjdk.jmh.annotations.*
 
+object Performance extends LazyLogging {
+  val conf = ConfigFactory.load("app.conf")
+  val store = Store(conf)
+  logger.info("Database and Store initialized for performance testing.")
+}
+
 @State(Scope.Thread)
 @BenchmarkMode(Array(Mode.AverageTime))
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 @Warmup(iterations = 10)
 @Measurement(iterations = 10)
 @Fork(1)
-final class Performance() extends LazyLogging:
-  val conf = ConfigFactory.load("app.conf")
-  val store = Store(conf)
-  var todo = Todo(0, "")
+final class Performance():
+  import Performance.store
 
-  logger.info("Database and Store initialized for performance testing.")
+  var todo = Todo(0, "")
 
   @Benchmark
   def addTodo(): Todo =

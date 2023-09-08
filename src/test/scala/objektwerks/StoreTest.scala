@@ -19,7 +19,7 @@ class StoreTest extends AnyFunSuite with Matchers:
 
     val updatedTodo = todo.copy(task = "wash and dry car")
     val updated = store.updateTodo(updatedTodo)
-    println(s"*** Update Todo: $todo")
+    println(s"*** Update Todo: $updatedTodo")
     updated shouldBe true
 
     val count = store.count()

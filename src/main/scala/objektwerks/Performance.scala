@@ -1,18 +1,11 @@
 package objektwerks
 
 import com.typesafe.config.ConfigFactory
-import com.typesafe.scalalogging.LazyLogging
 
 import java.util.UUID
 import java.util.concurrent.TimeUnit
 
 import org.openjdk.jmh.annotations.*
-
-object Performance extends LazyLogging {
-  val conf = ConfigFactory.load("app.conf")
-  val store = Store(conf)
-  logger.info("*** Database and Store initialized for performance testing.")
-}
 
 @State(Scope.Thread)
 @BenchmarkMode(Array(Mode.AverageTime))
@@ -21,9 +14,11 @@ object Performance extends LazyLogging {
 @Measurement(iterations = 10)
 @Fork(1)
 final class Performance():
-  import Performance.store
-
+  val conf = ConfigFactory.load("app.conf")
+  val store = Store(conf)
   var todo = Todo(0, "")
+
+  println("*** Database and Store initialized for performance testing.")
 
   @Benchmark
   def addTodo(): Todo =

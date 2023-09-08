@@ -21,11 +21,12 @@ final class Store(conf: Config):
   ds.setUser(user)
   ds.setPassword(password)
 
+  val repo = TodoRepo()
+
   val connection = ds.getConnection()
+  require(count() == 0, "Database connection is invalid!")
   println( s"*** Connection is valid: ${connection.isValid(0)}")
   connection.close()
-
-  val repo = TodoRepo()
 
   private def withRepeatableRead(connection: Connection): Unit =
     connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ)

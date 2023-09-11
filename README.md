@@ -4,7 +4,7 @@ Magnum
 
 Warning
 -------
->Magnum findAll does not currently work with H2.
+>Magnum ***findAll*** currently returns **zero** results from an H2 memory or file database.
 
 >**See** [Issue 17](https://github.com/AugustNagro/magnum/issues/17)
 

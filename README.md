@@ -6,6 +6,16 @@ Warning
 -------
 >Magnum ***findAll*** currently returns **zero** results from an H2 memory or file database.
 
+>The following H2 config is used:
+```
+ds {
+  # url = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;INIT=runscript from './ddl.sql'"
+  url = "jdbc:h2:file:./target/db;DB_CLOSE_DELAY=-1;INIT=runscript from './ddl.sql'"
+  user = "sa"
+  password = "sa"
+}
+```
+
 >**See** [Issue 17](https://github.com/AugustNagro/magnum/issues/17)
 
 Build

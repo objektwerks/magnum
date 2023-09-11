@@ -15,8 +15,6 @@ ds {
   password = "sa"
 }
 ```
->Both ***urls*** yield the same test result.
-
 >**See** [findAll returns zero results from H2 #17](https://github.com/AugustNagro/magnum/issues/17)
 
 Build

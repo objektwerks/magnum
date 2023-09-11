@@ -15,7 +15,7 @@ ds {
   password = "sa"
 }
 ```
->Both urls yield the same result.
+>Both ***urls*** yield the same test result.
 
 >**See** [Magnum Issue 17](https://github.com/AugustNagro/magnum/issues/17)
 

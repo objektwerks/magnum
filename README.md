@@ -4,9 +4,9 @@ Magnum
 
 Warning
 -------
->Magnum ***findAll*** currently returns **zero** results from an H2 memory or file database.
+>Magnum ***findAll*** currently returns **zero** results from an **H2** memory or file database.
 
->The following H2 config is used:
+>The following **H2** config is used:
 ```
 ds {
   # url = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;INIT=runscript from './ddl.sql'"

@@ -17,7 +17,7 @@ ds {
 ```
 >Both ***urls*** yield the same test result.
 
->**See** [Magnum Issue 17](https://github.com/AugustNagro/magnum/issues/17)
+>**See** [findAll returns zero results from H2 #17](https://github.com/AugustNagro/magnum/issues/17)
 
 Build
 -----

@@ -16,7 +16,7 @@ ds {
 }
 ```
 
->**See** [Issue 17](https://github.com/AugustNagro/magnum/issues/17)
+>**See** [Magnum Issue 17](https://github.com/AugustNagro/magnum/issues/17)
 
 Build
 -----

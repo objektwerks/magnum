@@ -3,9 +3,14 @@ package objektwerks
 import com.augustnagro.magnum.transact
 import com.typesafe.config.Config
 
+import java.nio.file.Files
+import java.nio.file.Path
 import java.sql.Connection
 
 import org.h2.jdbcx.JdbcDataSource
+
+import scala.util.Using
+
 
 final class Store(conf: Config):
   val ds = JdbcDataSource()
@@ -20,6 +25,14 @@ final class Store(conf: Config):
   ds.setURL(url)
   ds.setUser(user)
   ds.setPassword(password)
+
+  Using.Manager(use =>
+    val con = use(ds.getConnection)
+    val stmt = use(con.createStatement)
+    val sql = Files.readString(Path.of("ddl.sql"))
+    println("executing \n" + sql)
+    stmt.execute(sql)
+  ).get
 
   val repo = TodoRepo()
 

@@ -16,7 +16,7 @@ class StoreTest extends AnyFunSuite with Matchers:
     given ds: DataSource = store.ds
 
     connect(ds):
-      store.count shouldBe 0
+      store.count() shouldBe 0
 
     val todoBuilder = TodoBuilder(task = "wash car")
     val todo =
@@ -34,11 +34,11 @@ class StoreTest extends AnyFunSuite with Matchers:
 
     val count =
       transact(ds):
-        store.count
+        store.count()
     println(s"*** Todo count should be 1 - but is $count! Why?")
 
     val todos =
-      transact(ds):
+      connect(ds):
         store.listTodos()
     println(s"*** List Todos: ${todos.toString}")
     todos.length shouldBe 1

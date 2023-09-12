@@ -28,7 +28,7 @@ final class Store(conf: Config):
 
   val repo = TodoRepo()
 
-  def count(using DbCon): Long = repo.count
+  def count()(using DbCon): Long = repo.count
 
   def addTodo(todo: TodoBuilder)(using DbTx): Todo = repo.insertReturning(todo)
 
@@ -36,4 +36,4 @@ final class Store(conf: Config):
     repo.update(todo)
     true
 
-  def listTodos()(using DbTx): Vector[Todo] = repo.findAll
+  def listTodos()(using DbCon): Vector[Todo] = repo.findAll

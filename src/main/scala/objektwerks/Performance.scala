@@ -1,6 +1,6 @@
 package objektwerks
 
-import com.augustnagro.magnum.transact
+import com.augustnagro.magnum.{connect, transact}
 import com.typesafe.config.ConfigFactory
 
 import javax.sql.DataSource
@@ -40,5 +40,5 @@ final class Performance():
 
   @Benchmark
   def listTodos(): Vector[Todo] =
-    transact(ds):
+    connect(ds):
       store.listTodos()

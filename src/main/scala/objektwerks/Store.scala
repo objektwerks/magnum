@@ -10,7 +10,6 @@ import org.h2.jdbcx.JdbcDataSource
 
 import scala.util.Using
 
-
 final class Store(conf: Config):
   val ds = JdbcDataSource()
   ds.setURL( conf.getString("ds.url") )

@@ -14,7 +14,7 @@ import org.openjdk.jmh.annotations.*
 @Measurement(iterations = 10)
 @Fork(1)
 final class Performance():
-  val conf = ConfigFactory.load("app.conf")
+  val conf = ConfigFactory.load("store.conf")
   val store = Store(conf)
   var todo = Todo(0, "")
 

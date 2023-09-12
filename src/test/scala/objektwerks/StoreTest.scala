@@ -1,6 +1,6 @@
 package objektwerks
 
-import com.augustnagro.magnum.transact
+import com.augustnagro.magnum.{connect, transact}
 import com.typesafe.config.ConfigFactory
 
 import javax.sql.DataSource
@@ -15,7 +15,7 @@ class StoreTest extends AnyFunSuite with Matchers:
 
     given ds: DataSource = store.ds
 
-    transact(ds):
+    connect(ds):
       store.count shouldBe 0
 
     val todoBuilder = TodoBuilder(task = "wash car")

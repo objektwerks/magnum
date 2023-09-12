@@ -1,6 +1,6 @@
 package objektwerks
 
-import com.augustnagro.magnum.DbTx
+import com.augustnagro.magnum.{DbCon, DbTx}
 import com.typesafe.config.Config
 
 import java.nio.file.Files
@@ -28,7 +28,7 @@ final class Store(conf: Config):
 
   val repo = TodoRepo()
 
-  def count(using DbTx): Long = repo.count
+  def count(using DbCon): Long = repo.count
 
   def addTodo(todo: TodoBuilder)(using DbTx): Todo = repo.insertReturning(todo)
 

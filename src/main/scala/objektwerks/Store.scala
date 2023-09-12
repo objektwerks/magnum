@@ -19,11 +19,11 @@ final class Store(conf: Config):
   val password = conf.getString("ds.password")
 
   val success = Using.Manager(use =>
-    val con = use(ds.getConnection)
-    val stmt = use(con.createStatement)
-    val sql = Files.readString(Path.of("ddl.sql"))
-    println("executing \n" + sql)
-    stmt.execute(sql)
+    val connection = use( ds.getConnection )
+    val statement = use( connection.createStatement )
+    val sql = Files.readString( Path.of("ddl.sql") )
+    println("*** Executing ddl.sql ...\n" + sql)
+    statement.execute(sql)
   ).get
   println( s"*** Loaded database ddl.sql successfully: $success")
 

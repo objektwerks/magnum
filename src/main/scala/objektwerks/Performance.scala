@@ -1,7 +1,9 @@
 package objektwerks
 
+import com.augustnagro.magnum.transact
 import com.typesafe.config.ConfigFactory
 
+import javax.sql.DataSource
 import java.util.UUID
 import java.util.concurrent.TimeUnit
 
@@ -18,18 +20,25 @@ final class Performance():
   val store = Store(conf)
   var todo = Todo(0, "")
 
+  given ds: DataSource = store.ds
+
   println("*** Database and Store initialized for performance testing.")
 
   @Benchmark
   def addTodo(): Todo =
     val todoBuilder = TodoBuilder(task = UUID.randomUUID.toString)
-    todo = store.addTodo(todoBuilder)
+    todo =
+      transact(ds):
+        store.addTodo(todoBuilder)
     todo
 
   @Benchmark
   def updateTodo(): Boolean =
     todo = todo.copy(task = UUID.randomUUID.toString)
-    store.updateTodo(todo)
+    transact(ds):
+      store.updateTodo(todo)
 
   @Benchmark
-  def listTodos(): Vector[Todo] = store.listTodos()
+  def listTodos(): Vector[Todo] =
+    transact(ds):
+      store.listTodos()

@@ -1,11 +1,10 @@
 package objektwerks
 
-import com.augustnagro.magnum.{DbTx, transact}
+import com.augustnagro.magnum.DbTx
 import com.typesafe.config.Config
 
 import java.nio.file.Files
 import java.nio.file.Path
-import java.sql.Connection
 
 import org.h2.jdbcx.JdbcDataSource
 
@@ -29,22 +28,12 @@ final class Store(conf: Config):
 
   val repo = TodoRepo()
 
-  private def withRepeatableRead(connection: Connection): Unit =
-    connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ)
+  def count()(using DbTx): Long = repo.count
 
-  def count()(using DbTx): Long =
-    transact(ds, withRepeatableRead):
-      repo.count
-
-  def addTodo(todo: TodoBuilder)(using DbTx): Todo =
-    transact(ds):
-      repo.insertReturning(todo)
+  def addTodo(todo: TodoBuilder)(using DbTx): Todo = repo.insertReturning(todo)
 
   def updateTodo(todo: Todo)(using DbTx): Boolean =
-    transact(ds):
-      repo.update(todo)
-      true
+    repo.update(todo)
+    true
 
-  def listTodos()(using DbTx): Vector[Todo] =
-    transact(ds, withRepeatableRead):
-      repo.findAll
+  def listTodos()(using DbTx): Vector[Todo] = repo.findAll

@@ -23,7 +23,7 @@ final class Store(conf: Config):
     println("*** Executing ddl.sql ...\n" + sql)
     statement.execute(sql)
   ).get
-  println( s"*** Executed ddl.sql successfully: $success")
+  println(s"*** Executed ddl.sql successfully: $success")
 
   val repo = TodoRepo()
 

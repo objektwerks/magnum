@@ -18,28 +18,16 @@ final class Store(conf: Config):
   val user = conf.getString("ds.user")
   val password = conf.getString("ds.password")
 
-  println(s"*** url: $url")
-  println(s"*** user: $user")
-  println(s"*** password: $password")
-
-  ds.setURL(url)
-  ds.setUser(user)
-  ds.setPassword(password)
-
-  Using.Manager(use =>
+  val success = Using.Manager(use =>
     val con = use(ds.getConnection)
     val stmt = use(con.createStatement)
     val sql = Files.readString(Path.of("ddl.sql"))
     println("executing \n" + sql)
     stmt.execute(sql)
   ).get
+  println( s"*** Loaded database ddl.sql successfully: $success")
 
   val repo = TodoRepo()
-
-  val connection = ds.getConnection()
-  require(count() == 0, "Database connection is invalid!")
-  println( s"*** Connection is valid: ${connection.isValid(0)}")
-  connection.close()
 
   private def withRepeatableRead(connection: Connection): Unit =
     connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ)

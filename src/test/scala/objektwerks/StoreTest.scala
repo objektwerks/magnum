@@ -32,10 +32,8 @@ class StoreTest extends AnyFunSuite with Matchers:
     println(s"*** Update Todo: $updatedTodo")
     updated shouldBe true
 
-    val count =
-      transact(ds):
-        store.count()
-    println(s"*** Todo count should be 1 - but is $count! Why?")
+    transact(ds):
+      store.count() shouldBe 1
 
     val todos =
       connect(ds):

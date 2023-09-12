@@ -28,7 +28,7 @@ final class Store(conf: Config):
 
   val repo = TodoRepo()
 
-  def count()(using DbTx): Long = repo.count
+  def count(using DbTx): Long = repo.count
 
   def addTodo(todo: TodoBuilder)(using DbTx): Todo = repo.insertReturning(todo)
 

@@ -19,9 +19,7 @@ class StoreTest extends AnyFunSuite with Matchers:
 
     count() shouldBe 1
 
-    val todos = store.listTodos()
-    println(s"*** List Todos: ${todos.toString}")
-    todos.length shouldBe 1
+    listTodos().length shouldBe 1
   }
 
   def count(): Long = store.count()
@@ -35,3 +33,8 @@ class StoreTest extends AnyFunSuite with Matchers:
     val updated = store.updateTodo(updatedTodo)
     println(s"*** Update Todo: $updatedTodo")
     updated
+
+  def listTodos(): Vector[Todo] =
+    val todos = store.listTodos()
+    println(s"*** List Todos: ${todos.toString}")
+    todos

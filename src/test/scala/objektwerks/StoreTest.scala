@@ -22,7 +22,10 @@ class StoreTest extends AnyFunSuite with Matchers:
     listTodos().length shouldBe 1
   }
 
-  def count(): Long = store.count()
+  def count(): Long =
+    val count = store.count()
+    println(s"*** Count: $count")
+    count
 
   def addTodo(todoBuilder: TodoBuilder): Todo =
     val todo = store.addTodo(todoBuilder)

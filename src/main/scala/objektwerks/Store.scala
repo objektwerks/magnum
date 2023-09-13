@@ -18,15 +18,12 @@ private object Store:
     ds.setUser( conf.getString("ds.user") )
     ds.setPassword( conf.getString("ds.password") )
 
-    val success = Using.Manager(use =>
+    Using.Manager(use =>
       val connection = use( ds.getConnection )
       val statement = use( connection.createStatement )
       val sql = Files.readString( Path.of("ddl.sql") )
-      println("*** Executing ddl.sql ...\n" + sql)
       statement.execute(sql)
-    ).get
-    println(s"*** Executed ddl.sql successfully: $success")
-
+    )
     ds
 
 final class Store(conf: Config):

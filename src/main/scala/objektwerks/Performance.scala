@@ -18,8 +18,6 @@ final class Performance():
   val store = Store(conf)
   var todo = Todo(0, "")
 
-  println("*** Database and Store initialized for performance testing.")
-
   @Benchmark
   def addTodo(): Todo =
     val todoBuilder = TodoBuilder(task = UUID.randomUUID.toString)

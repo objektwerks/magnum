@@ -20,6 +20,8 @@ final class StoreTest extends AnyFunSuite with Matchers:
     count() shouldBe 1
 
     listTodos().length shouldBe 1
+
+    store.close()
   }
 
   def count(): Long =

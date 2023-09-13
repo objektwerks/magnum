@@ -34,9 +34,9 @@ final class Store(conf: Config):
     connect(ds):
       delegate.count()
 
-  def addTodo(todo: TodoBuilder): Todo =
+  def addTodo(todoBuilder: TodoBuilder): Todo =
     transact(ds):
-      delegate.addTodo(todo)
+      delegate.addTodo(todoBuilder)
 
   def updateTodo(todo: Todo): Boolean =
     transact(ds):

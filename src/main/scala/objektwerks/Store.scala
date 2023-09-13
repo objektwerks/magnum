@@ -27,7 +27,7 @@ private object Store:
     ds
 
 final class Store(conf: Config):
-  private given ds: DataSource = Store.createDataSource(conf)
+  private val ds: DataSource = Store.createDataSource(conf)
 
   private val delegate = Delegate()
 

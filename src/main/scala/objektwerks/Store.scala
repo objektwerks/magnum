@@ -31,6 +31,8 @@ final class Store(config: Config):
   private val ds: DataSource = Store.createDataSource(config)
   private val delegate = Delegate()
 
+  def close(): Unit = ds.asInstanceOf[JdbcConnectionPool].dispose()
+
   def count(): Long =
     connect(ds):
       delegate.count()

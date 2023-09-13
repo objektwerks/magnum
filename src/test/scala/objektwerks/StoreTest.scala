@@ -5,7 +5,7 @@ import com.typesafe.config.ConfigFactory
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-class StoreTest extends AnyFunSuite with Matchers:
+final class StoreTest extends AnyFunSuite with Matchers:
   val conf = ConfigFactory.load("test.conf")
   val store = Store(conf)
 

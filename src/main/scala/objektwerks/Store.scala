@@ -47,7 +47,7 @@ final class Store(conf: Config):
       delegate.listTodos()
 
 private final class Delegate():
-  val repo = TodoRepo()
+  private val repo = TodoRepo()
 
   def count()(using DbCon): Long = repo.count
 

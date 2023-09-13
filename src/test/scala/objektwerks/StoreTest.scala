@@ -6,11 +6,11 @@ import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 class StoreTest extends AnyFunSuite with Matchers:
-  test("store") {
-    val conf = ConfigFactory.load("test.conf")
-    val store = Store(conf)
+  val conf = ConfigFactory.load("test.conf")
+  val store = Store(conf)
 
-    store.count() shouldBe 0
+  test("store") {
+    count() shouldBe 0
 
     val todoBuilder = TodoBuilder(task = "wash car")
     val todo = store.addTodo(todoBuilder)
@@ -22,9 +22,11 @@ class StoreTest extends AnyFunSuite with Matchers:
     println(s"*** Update Todo: $updatedTodo")
     updated shouldBe true
 
-    store.count() shouldBe 1
+    count() shouldBe 1
 
     val todos = store.listTodos()
     println(s"*** List Todos: ${todos.toString}")
     todos.length shouldBe 1
   }
+
+  def count(): Long = store.count()

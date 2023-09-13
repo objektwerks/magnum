@@ -30,23 +30,23 @@ private object Store:
     ds
 
 final class Store(conf: Config):
-  given ds: DataSource = Store.createDataSource(conf)
+  private given ds: DataSource = Store.createDataSource(conf)
 
-  val delegate = Delegate()
+  private val delegate = Delegate()
 
   def count(): Long =
     connect(ds):
       delegate.count()
 
-  def addTodo(todo: TodoBuilder)(using DbTx): Todo =
+  def addTodo(todo: TodoBuilder): Todo =
     transact(ds):
       delegate.addTodo(todo)
 
-  def updateTodo(todo: Todo)(using DbTx): Boolean =
+  def updateTodo(todo: Todo): Boolean =
     transact(ds):
       delegate.updateTodo(todo)
 
-  def listTodos()(using DbCon): Vector[Todo] =
+  def listTodos(): Vector[Todo] =
     connect(ds):
       delegate.listTodos()
 

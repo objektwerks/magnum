@@ -21,7 +21,7 @@ private object Store:
     Using.Manager( use =>
       val connection = use( ds.getConnection )
       val statement = use( connection.createStatement )
-      val sql = Files.readString( Path.of("ddl.sql") )
+      val sql = Files.readString( Path.of( conf.getString("ds.ddl") ) )
       statement.execute(sql)
     )
     ds

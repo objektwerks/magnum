@@ -12,16 +12,16 @@ import org.h2.jdbcx.JdbcDataSource
 import scala.util.Using
 
 private object Store:
-  def createDataSource(conf: Config): DataSource =
+  def createDataSource(config: Config): DataSource =
     val ds = JdbcDataSource()
-    ds.setURL( conf.getString("ds.url") )
-    ds.setUser( conf.getString("ds.user") )
-    ds.setPassword( conf.getString("ds.password") )
+    ds.setURL( config.getString("ds.url") )
+    ds.setUser( config.getString("ds.user") )
+    ds.setPassword( config.getString("ds.password") )
 
     Using.Manager( use =>
       val connection = use( ds.getConnection )
       val statement = use( connection.createStatement )
-      val sql = Files.readString( Path.of( conf.getString("ds.ddl") ) )
+      val sql = Files.readString( Path.of( config.getString("ds.ddl") ) )
       statement.execute(sql)
     )
     ds

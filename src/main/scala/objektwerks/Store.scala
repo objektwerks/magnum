@@ -51,7 +51,7 @@ private final class Delegate():
 
   def count()(using DbCon): Long = repo.count
 
-  def addTodo(todo: TodoBuilder)(using DbTx): Todo = repo.insertReturning(todo)
+  def addTodo(todoBuilder: TodoBuilder)(using DbTx): Todo = repo.insertReturning(todoBuilder)
 
   def updateTodo(todo: Todo)(using DbTx): Boolean =
     repo.update(todo)

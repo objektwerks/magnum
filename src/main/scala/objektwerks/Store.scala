@@ -18,7 +18,7 @@ private object Store:
     ds.setUser( conf.getString("ds.user") )
     ds.setPassword( conf.getString("ds.password") )
 
-    Using.Manager(use =>
+    Using.Manager( use =>
       val connection = use( ds.getConnection )
       val statement = use( connection.createStatement )
       val sql = Files.readString( Path.of("ddl.sql") )

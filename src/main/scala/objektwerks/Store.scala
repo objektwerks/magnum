@@ -7,16 +7,17 @@ import java.nio.file.Files
 import java.nio.file.Path
 import javax.sql.DataSource
 
-import org.h2.jdbcx.JdbcDataSource
+import org.h2.jdbcx.JdbcConnectionPool
 
 import scala.util.Using
 
 private object Store:
   def createDataSource(config: Config): DataSource =
-    val ds = JdbcDataSource()
-    ds.setURL( config.getString("ds.url") )
-    ds.setUser( config.getString("ds.user") )
-    ds.setPassword( config.getString("ds.password") )
+    val ds = JdbcConnectionPool.create(
+      config.getString("ds.url"),
+      config.getString("ds.user"),
+      config.getString("ds.password")
+    )
 
     Using.Manager( use =>
       val connection = use( ds.getConnection )

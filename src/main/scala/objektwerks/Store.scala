@@ -26,8 +26,8 @@ private object Store:
     )
     ds
 
-final class Store(conf: Config):
-  private val ds: DataSource = Store.createDataSource(conf)
+final class Store(config: Config):
+  private val ds: DataSource = Store.createDataSource(config)
   private val delegate = Delegate()
 
   def count(): Long =

@@ -47,14 +47,14 @@ final class Store(conf: Config):
       delegate.listTodos()
 
 private final class Delegate():
-  private val repo = TodoRepo()
+  private val todoRepo = TodoRepo()
 
-  def count()(using DbCon): Long = repo.count
+  def count()(using DbCon): Long = todoRepo.count
 
-  def addTodo(todoBuilder: TodoBuilder)(using DbTx): Todo = repo.insertReturning(todoBuilder)
+  def addTodo(todoBuilder: TodoBuilder)(using DbTx): Todo = todoRepo.insertReturning(todoBuilder)
 
   def updateTodo(todo: Todo)(using DbTx): Boolean =
-    repo.update(todo)
+    todoRepo.update(todo)
     true
 
-  def listTodos()(using DbCon): Vector[Todo] = repo.findAll
+  def listTodos()(using DbCon): Vector[Todo] = todoRepo.findAll

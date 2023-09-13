@@ -15,10 +15,7 @@ class StoreTest extends AnyFunSuite with Matchers:
     val todo = addTodo( TodoBuilder(task = "wash car") )
     todo.id shouldBe 1
 
-    val updatedTodo = todo.copy(task = "wash and dry car")
-    val updated = store.updateTodo(updatedTodo)
-    println(s"*** Update Todo: $updatedTodo")
-    updated shouldBe true
+    updateTodo( todo.copy(task = "wash and dry car") ) shouldBe true
 
     count() shouldBe 1
 
@@ -33,3 +30,8 @@ class StoreTest extends AnyFunSuite with Matchers:
     val todo = store.addTodo(todoBuilder)
     println(s"*** Add Todo: $todo")
     todo
+
+  def updateTodo(updatedTodo: Todo): Boolean =
+    val updated = store.updateTodo(updatedTodo)
+    println(s"*** Update Todo: $updatedTodo")
+    updated

@@ -16,7 +16,7 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
     println("*** Store closed.")
 
   test("store") {
-    count() shouldBe 0
+    countTodos() shouldBe 0
 
     val todo = addTodo( TodoBuilder(task = "wash car") )
     todo.id shouldBe 1
@@ -26,7 +26,7 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
     val updatedTodo = todo.copy(task = "wash and dry car")
     updateTodo(updatedTodo) shouldBe true
 
-    count() shouldBe 1
+    countTodos() shouldBe 1
 
     listTodos().length shouldBe 1
 
@@ -36,12 +36,12 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
 
     listTodos().length shouldBe 0
 
-    count() shouldBe 0
+    countTodos() shouldBe 0
   }
 
-  def count(): Long =
-    val count = store.count()
-    println(s"*** Count: $count")
+  def countTodos(): Long =
+    val count = store.countTodos()
+    println(s"*** Count Todos: $count")
     count
 
   def addTodo(todoBuilder: TodoBuilder): Todo =

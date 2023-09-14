@@ -33,9 +33,9 @@ final class Store(config: Config):
 
   def close(): Unit = ds.asInstanceOf[JdbcConnectionPool].dispose()
 
-  def count(): Long =
+  def countTodos(): Long =
     connect(ds):
-      delegate.count()
+      delegate.countTodos()
 
   def addTodo(todoBuilder: TodoBuilder): Todo =
     transact(ds):
@@ -60,7 +60,7 @@ final class Store(config: Config):
 private final class Delegate():
   private val todoRepo = TodoRepo()
 
-  def count()(using DbCon): Long = todoRepo.count
+  def countTodos()(using DbCon): Long = todoRepo.count
 
   def addTodo(todoBuilder: TodoBuilder)(using DbTx): Todo =
     todoRepo.insertReturning(todoBuilder)

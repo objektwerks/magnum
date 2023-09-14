@@ -21,7 +21,8 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
     val todo = addTodo( TodoBuilder(task = "wash car") )
     todo.id shouldBe 1
 
-    updateTodo( todo.copy(task = "wash and dry car") ) shouldBe true
+    val updatedTodo = todo.copy(task = "wash and dry car")
+    updateTodo(updatedTodo) shouldBe true
 
     count() shouldBe 1
 

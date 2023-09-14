@@ -49,6 +49,10 @@ final class Store(config: Config):
     transact(ds):
       delegate.deleteTodo(todo)
 
+  def existsById(id: Int): Boolean =
+    connect(ds):
+      delegate.existsById(id)
+
   def listTodos(): Vector[Todo] =
     connect(ds):
       delegate.listTodos()

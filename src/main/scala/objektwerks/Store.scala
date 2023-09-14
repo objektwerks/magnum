@@ -49,7 +49,7 @@ final class Store(config: Config):
     transact(ds):
       delegate.deleteTodo(todo)
 
-  def existsById(id: Int): Boolean =
+  def todoExistsById(id: Int): Boolean =
     connect(ds):
       delegate.existsById(id)
 

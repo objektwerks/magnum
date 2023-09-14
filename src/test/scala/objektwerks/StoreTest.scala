@@ -60,7 +60,7 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
     deleted
 
   def todoExistsById(id: Int): Boolean =
-    val exists = store.existsById(id)
+    val exists = store.todoExistsById(id)
     println(s"*** Todo Exists: $exists")
     exists
 

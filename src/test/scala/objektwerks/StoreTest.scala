@@ -27,6 +27,12 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
     count() shouldBe 1
 
     listTodos().length shouldBe 1
+
+    deleteTodo(updatedTodo)
+
+    listTodos().length shouldBe 0
+
+    count() shouldBe 0
   }
 
   def count(): Long =

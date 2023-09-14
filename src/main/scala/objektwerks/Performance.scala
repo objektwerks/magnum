@@ -30,4 +30,5 @@ final class Performance():
     store.updateTodo(todo)
 
   @Benchmark
-  def listTodos(): Vector[Todo] = store.listTodos()
+  def listTodos(): Vector[Todo] =
+    store.listTodos()

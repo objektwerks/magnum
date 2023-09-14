@@ -58,7 +58,8 @@ private final class Delegate():
 
   def count()(using DbCon): Long = todoRepo.count
 
-  def addTodo(todoBuilder: TodoBuilder)(using DbTx): Todo = todoRepo.insertReturning(todoBuilder)
+  def addTodo(todoBuilder: TodoBuilder)(using DbTx): Todo =
+    todoRepo.insertReturning(todoBuilder)
 
   def updateTodo(todo: Todo)(using DbTx): Boolean =
     todoRepo.update(todo)
@@ -67,5 +68,8 @@ private final class Delegate():
   def deleteTodo(todo: Todo)(using DbTx): Boolean =
     todoRepo.delete(todo)
     true
+
+  def existsById(id: Int)(using DbCon): Boolean =
+    todoRepo.existsById(id)
 
   def listTodos()(using DbCon): Vector[Todo] = todoRepo.findAll

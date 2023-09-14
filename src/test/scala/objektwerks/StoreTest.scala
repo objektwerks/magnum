@@ -44,6 +44,11 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
     println(s"*** Update Todo: $updatedTodo")
     updated
 
+  def deleteTodo(todo: Todo): Boolean =
+    val deleted = store.deleteTodo(todo)
+    println(s"*** Delete Todo: $todo")
+    deleted
+
   def listTodos(): Vector[Todo] =
     val todos = store.listTodos()
     println(s"*** List Todos: ${todos.toString}")

@@ -23,6 +23,8 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
 
     todoExistsById(todo.id) shouldBe true
 
+    findTodoById(todo.id) shouldBe Some(todo)
+
     val updatedTodo = todo.copy(task = "wash and dry car")
     updateTodo(updatedTodo) shouldBe true
 
@@ -33,6 +35,8 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
     deleteTodo(updatedTodo)
 
     todoExistsById(todo.id) shouldBe false
+
+    findTodoById(todo.id) shouldBe None
 
     listTodos().length shouldBe 0
 

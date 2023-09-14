@@ -45,6 +45,10 @@ final class Store(config: Config):
     transact(ds):
       delegate.updateTodo(todo)
 
+  def deleteTodo(todo: Todo): Boolean =
+    transact(ds):
+      delegate.deleteTodo(todo)
+
   def listTodos(): Vector[Todo] =
     connect(ds):
       delegate.listTodos()

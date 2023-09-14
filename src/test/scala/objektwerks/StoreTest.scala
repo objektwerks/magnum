@@ -9,6 +9,7 @@ import org.scalatest.matchers.should.Matchers
 final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
   val config = ConfigFactory.load("test.conf")
   val store = Store(config)
+  println("*** Store open.")
 
   override protected def afterAll(): Unit =
     store.close()

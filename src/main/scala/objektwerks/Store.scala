@@ -60,4 +60,8 @@ private final class Delegate():
     todoRepo.update(todo)
     true
 
+  def deleteTodo(todo: Todo)(using DbTx): Boolean =
+    todoRepo.delete(todo)
+    true
+
   def listTodos()(using DbCon): Vector[Todo] = todoRepo.findAll

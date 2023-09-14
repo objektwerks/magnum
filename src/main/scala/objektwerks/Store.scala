@@ -51,7 +51,7 @@ final class Store(config: Config):
 
   def todoExistsById(id: Int): Boolean =
     connect(ds):
-      delegate.existsById(id)
+      delegate.todoExistsById(id)
 
   def listTodos(): Vector[Todo] =
     connect(ds):
@@ -73,7 +73,7 @@ private final class Delegate():
     todoRepo.delete(todo)
     true
 
-  def existsById(id: Int)(using DbCon): Boolean =
+  def todoExistsById(id: Int)(using DbCon): Boolean =
     todoRepo.existsById(id)
 
   def listTodos()(using DbCon): Vector[Todo] = todoRepo.findAll

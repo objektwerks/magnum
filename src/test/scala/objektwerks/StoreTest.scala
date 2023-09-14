@@ -55,6 +55,11 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
     println(s"*** Delete Todo: $todo")
     deleted
 
+  def todoExistsById(id: Int): Boolean =
+    val exists = store.existsById(id)
+    println(s"*** Todo Exists: $exists")
+    exists
+
   def listTodos(): Vector[Todo] =
     val todos = store.listTodos()
     println(s"*** List Todos: ${todos.toString}")

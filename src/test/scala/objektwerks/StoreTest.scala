@@ -2,12 +2,17 @@ package objektwerks
 
 import com.typesafe.config.ConfigFactory
 
+import org.scalatest.BeforeAndAfterAll
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-final class StoreTest extends AnyFunSuite with Matchers:
+final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
   val config = ConfigFactory.load("test.conf")
   val store = Store(config)
+
+  override protected def afterAll(): Unit =
+    store.close()
+    println("*** Store closed.")
 
   test("store") {
     count() shouldBe 0
@@ -20,8 +25,6 @@ final class StoreTest extends AnyFunSuite with Matchers:
     count() shouldBe 1
 
     listTodos().length shouldBe 1
-
-    store.close()
   }
 
   def count(): Long =

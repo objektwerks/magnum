@@ -32,6 +32,8 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
 
     deleteTodo(updatedTodo)
 
+    todoExistsById(todo.id) shouldBe false
+
     listTodos().length shouldBe 0
 
     count() shouldBe 0

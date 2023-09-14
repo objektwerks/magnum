@@ -76,4 +76,7 @@ private final class Delegate():
   def todoExistsById(id: Int)(using DbCon): Boolean =
     todoRepo.existsById(id)
 
+  def findTodoById(id: Int)(using DbCon): Option[Todo] =
+    todoRepo.findById(id)
+
   def listTodos()(using DbCon): Vector[Todo] = todoRepo.findAll

@@ -53,6 +53,10 @@ final class Store(config: Config):
     connect(ds):
       delegate.todoExistsById(id)
 
+  def findTodoById(id: Int): Option[Todo] =
+    connect(ds):
+      delegate.findTodoById(id)
+
   def listTodos(): Vector[Todo] =
     connect(ds):
       delegate.listTodos()

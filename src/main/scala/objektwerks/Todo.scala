@@ -4,6 +4,11 @@ import com.augustnagro.magnum.{DbCodec, H2DbType, Id, Repo, SqlNameMapper, Table
 
 import java.time.Instant
 
+object Todo:
+  given taskOrdering: Ordering[Todo] = Ordering.by[Todo, String](t => t.task)
+  given createdOrdering: Ordering[Todo] = Ordering.by[Todo, Long](t => t.created).reverse
+  given completedOrdering: Ordering[Todo] = Ordering.by[Todo, Long](t => t.completed)
+
 @Table(H2DbType, SqlNameMapper.SameCase)
 final case class Todo(@Id id: Int,
                       task: String,

@@ -9,11 +9,9 @@ import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
-  System.setProperty("java.util.logging.SimpleFormatter.format", "%1$tF %1$tT %4$s %2$s %5$s%6$s%n")
   val rootLogger = Logger.getLogger("")
   rootLogger.setLevel(Level.ALL)
-  val fileHandler = FileHandler("./target/magnum.log")
-  rootLogger.addHandler(fileHandler)
+  rootLogger.addHandler(  FileHandler("./target/magnum.log") ) // XML output!!! Yikes!!! Logback support, please!!! :)
 
   val config = ConfigFactory.load("test.conf")
   val store = Store(config)

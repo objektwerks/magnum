@@ -2,17 +2,17 @@ package objektwerks
 
 import com.typesafe.config.ConfigFactory
 
-import java.util.logging.{FileHandler, Level, Logger, SimpleFormatter}
+import java.util.logging.{FileHandler, Level, Logger}
 
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
-  val rootLogger = Logger.getLogger("com.augustnagro.magnum")
-  rootLogger.setLevel(Level.FINE)
+  System.setProperty("java.util.logging.SimpleFormatter.format", "%1$tF %1$tT %4$s %2$s %5$s%6$s%n")
+  val rootLogger = Logger.getLogger("")
+  rootLogger.setLevel(Level.ALL)
   val fileHandler = FileHandler("./target/magnum.log")
-  fileHandler.setFormatter( new SimpleFormatter() )
   rootLogger.addHandler(fileHandler)
 
   val config = ConfigFactory.load("test.conf")

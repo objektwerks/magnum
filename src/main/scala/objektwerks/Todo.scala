@@ -11,15 +11,19 @@ object Todo:
 
   val orderByTaskSpec = Spec[Todo]
     .orderBy("task", SortOrder.Asc, NullOrder.Last)
-    .build
 
   val orderByCreatedSpec = Spec[Todo]
     .orderBy("created", SortOrder.Desc, NullOrder.Last)
-    .build
 
   val orderByCompletedSpec = Spec[Todo]
     .orderBy("completed", SortOrder.Asc, NullOrder.Last)
-    .build
+
+  enum OrderBy(spec: Spec[Todo]):
+    case task extends OrderBy(orderByTaskSpec)
+    case created extends OrderBy(orderByCreatedSpec)
+    case completed extends OrderBy(orderByCompletedSpec)
+
+    def asString(): String = spec.toString
 
   val info = TableInfo[TodoBuilder, Todo, Int]
 

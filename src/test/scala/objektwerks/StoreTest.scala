@@ -80,5 +80,5 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
 
   def listTodos(orderBy: OrderBy): Vector[Todo] =
     val todos = store.listTodos(orderBy)
-    println(s"*** List Todos: ${todos.toString}")
+    println(s"*** List Todos by Order: ${todos.toString}")
     todos

@@ -12,7 +12,7 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
   val rootLogger = Logger.getLogger("")
   rootLogger.setLevel(Level.ALL)
   rootLogger.addHandler( FileHandler("./target/magnum.log") )
-  // XML output!!! Yikes!!! Logback support, please!!! :)
+  // XML log output!!! Yikes!!! Logback support, please!!! :)
 
   val config = ConfigFactory.load("test.conf")
   val store = Store(config)

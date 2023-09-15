@@ -1,6 +1,6 @@
 package objektwerks
 
-import com.augustnagro.magnum.{DbCodec, H2DbType, Id, Repo, SqlNameMapper, Table, TableInfo}
+import com.augustnagro.magnum.{DbCodec, H2DbType, Id, NullOrder, Repo, SortOrder, Spec, SqlNameMapper, Table, TableInfo}
 
 import java.time.Instant
 
@@ -8,6 +8,10 @@ object Todo:
   given taskOrdering: Ordering[Todo] = Ordering.by[Todo, String](t => t.task)
   given createdOrdering: Ordering[Todo] = Ordering.by[Todo, Long](t => t.created).reverse
   given completedOrdering: Ordering[Todo] = Ordering.by[Todo, Long](t => t.completed)
+
+  val orderByTaskSpec = Spec[Todo]
+    .orderBy("task", SortOrder.Asc, NullOrder.Last)
+    .build
 
   def epochSecond(): Long = Instant.now.getEpochSecond
   def toInstant(epochSecond: Long): Instant = Instant.ofEpochSecond(epochSecond)

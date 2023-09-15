@@ -23,7 +23,7 @@ object Todo:
     case created extends OrderBy(orderByCreatedSpec)
     case completed extends OrderBy(orderByCompletedSpec)
 
-    def asString(): String = spec.toString
+    def todoSpec(): Spec[Todo] = spec
 
   val info = TableInfo[TodoBuilder, Todo, Int]
 

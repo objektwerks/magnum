@@ -15,11 +15,7 @@ object Todo:
   given taskOrdering: Ordering[Todo] = Ordering.by[Todo, String](t => t.task)
   given createdOrdering: Ordering[Todo] = Ordering.by[Todo, Long](t => t.created).reverse
   given completedOrdering: Ordering[Todo] = Ordering.by[Todo, Long](t => t.completed)
-
-  val info = TableInfo[TodoBuilder, Todo, Int]
   
-  val completedTodosQuery = sql"SELECT ${info.all} FROM $info WHERE ${info.completed} > 0".query[Todo]
-
   def epochSecond(): Long = Instant.now.getEpochSecond
   def toInstant(epochSecond: Long): Instant = Instant.ofEpochSecond(epochSecond)
 
@@ -33,4 +29,6 @@ final case class TodoBuilder(task: String,
                              created: Long = Todo.epochSecond(),
                              completed: Long = 0) derives DbCodec
 
-final class TodoRepo extends Repo[TodoBuilder, Todo, Int]
+final class TodoRepo extends Repo[TodoBuilder, Todo, Int]:
+  val info = TableInfo[TodoBuilder, Todo, Int]
+  val completedTodosQuery = sql"SELECT ${info.all} FROM $info WHERE ${info.completed} > 0".query[Todo]

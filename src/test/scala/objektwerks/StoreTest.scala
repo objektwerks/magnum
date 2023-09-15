@@ -40,6 +40,8 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
 
     listTodos(OrderBy.TaskAsc).head.task shouldBe "mow yard"
 
+
+
     deleteTodo(updatedTodo)
     todoExistsById(todo.id) shouldBe false
     findTodoById(todo.id) shouldBe None
@@ -90,4 +92,9 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
   def listTodos(orderBy: OrderBy): Vector[Todo] =
     val todos = store.listTodos(orderBy)
     println(s"*** List Todos by Order: ${todos.toString}")
+    todos
+
+  def listCompletedTodos(): Vector[Todo] =
+    val todos = store.listCompletedTodos()
+    println(s"*** List Completed Todos: ${todos.toString}")
     todos

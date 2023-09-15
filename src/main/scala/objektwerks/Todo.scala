@@ -1,6 +1,6 @@
 package objektwerks
 
-import com.augustnagro.magnum.{DbCodec, H2DbType, Id, NullOrder, Repo, SortOrder, Spec, SqlNameMapper, Table, TableInfo}
+import com.augustnagro.magnum.{DbCodec, H2DbType, Id, NullOrder, Repo, SortOrder, Spec, sql, SqlNameMapper, Table, TableInfo}
 
 import java.time.Instant
 
@@ -17,6 +17,8 @@ object Todo:
   given completedOrdering: Ordering[Todo] = Ordering.by[Todo, Long](t => t.completed)
 
   val info = TableInfo[TodoBuilder, Todo, Int]
+  
+  val completedTasksQuery = sql"SELECT ${info.all} FROM $info WHERE ${info.completed} > 0".query
 
   def epochSecond(): Long = Instant.now.getEpochSecond
   def toInstant(epochSecond: Long): Instant = Instant.ofEpochSecond(epochSecond)

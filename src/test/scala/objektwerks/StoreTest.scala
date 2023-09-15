@@ -17,6 +17,7 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
 
   test("store") {
     countTodos() shouldBe 0
+    listTodos().length shouldBe 0
 
     val todo = addTodo( TodoBuilder(task = "wash car") )
     todo.id shouldBe 1
@@ -47,8 +48,8 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
     todoExistsById(secondTodo.id) shouldBe false
     findTodoById(secondTodo.id) shouldBe None
 
-    listTodos().length shouldBe 0
     countTodos() shouldBe 0
+    listTodos().length shouldBe 0
   }
 
   def countTodos(): Long =

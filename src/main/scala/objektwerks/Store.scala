@@ -66,6 +66,10 @@ final class Store(config: Config):
     connect(ds):
       delegate.listTodos(orderBy.todoSpec())
 
+  def listCompletedTodos(): Vector[Todo] =
+    connect(ds):
+      delegate.listCompletedTodos()
+
 private final class Delegate():
   private val todoRepo = TodoRepo()
 

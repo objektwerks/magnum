@@ -41,6 +41,8 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
     listTodos(OrderBy.TaskAsc).head.task shouldBe "mow yard"
 
     listCompletedTodos().length shouldBe 0
+    updateTodo( updatedTodo.copy(completed = Todo.epochSecond()) ) shouldBe true
+    listCompletedTodos().length shouldBe 1
 
     deleteTodo(updatedTodo)
     todoExistsById(todo.id) shouldBe false

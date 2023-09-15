@@ -10,6 +10,7 @@ object Todo:
   given completedOrdering: Ordering[Todo] = Ordering.by[Todo, Long](t => t.completed)
 
   def epochSecond(): Long = Instant.now.getEpochSecond
+  def toInstant(epochSecond: Long): Instant = Instant.ofEpochSecond(epochSecond)
 
 @Table(H2DbType, SqlNameMapper.SameCase)
 final case class Todo(@Id id: Int,

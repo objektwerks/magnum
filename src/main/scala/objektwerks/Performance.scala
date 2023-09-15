@@ -16,7 +16,7 @@ import org.openjdk.jmh.annotations.*
 final class Performance():
   val conf = ConfigFactory.load("store.conf")
   val store = Store(conf)
-  var todo = Todo(0, "")
+  var todo = Todo(0, "", 0, 0)
 
   @Benchmark
   def addTodo(): Todo =

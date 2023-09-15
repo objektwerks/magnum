@@ -10,7 +10,7 @@ import org.scalatest.matchers.should.Matchers
 
 final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
   val rootLogger = Logger.getLogger("com.augustnagro.magnum")
-  rootLogger.setLevel(Level.ALL)
+  rootLogger.setLevel(Level.FINE)
   rootLogger.addHandler(FileHandler("./target/magnum.log"))
 
   val config = ConfigFactory.load("test.conf")

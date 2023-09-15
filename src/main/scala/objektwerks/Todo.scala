@@ -13,6 +13,8 @@ object Todo:
     .orderBy("task", SortOrder.Asc, NullOrder.Last)
     .build
 
+  val info = TableInfo[TodoBuilder, Todo, Int]
+
   def epochSecond(): Long = Instant.now.getEpochSecond
   def toInstant(epochSecond: Long): Instant = Instant.ofEpochSecond(epochSecond)
 
@@ -27,5 +29,3 @@ final case class TodoBuilder(task: String,
                              completed: Long = 0) derives DbCodec
 
 final class TodoRepo extends Repo[TodoBuilder, Todo, Int]
-
-val info = TableInfo[TodoBuilder, Todo, Int]

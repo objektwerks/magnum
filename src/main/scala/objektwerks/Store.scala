@@ -1,6 +1,6 @@
 package objektwerks
 
-import com.augustnagro.magnum.{connect, DbCon, DbTx, transact}
+import com.augustnagro.magnum.{connect, DbCon, DbTx, Spec, transact}
 import com.typesafe.config.Config
 
 import java.nio.file.Files
@@ -87,3 +87,6 @@ private final class Delegate():
 
   def listTodos()(using DbCon): Vector[Todo] =
     todoRepo.findAll
+
+  def listTodos(spec: Spec[Todo])(using DbCon): Vector[Todo] =
+    todoRepo.findAll(spec)

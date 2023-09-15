@@ -2,11 +2,17 @@ package objektwerks
 
 import com.typesafe.config.ConfigFactory
 
+import java.util.logging.{FileHandler, Level, Logger}
+
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
+  val rootLogger = Logger.getLogger("")
+  rootLogger.setLevel(Level.ALL)
+  rootLogger.addHandler(FileHandler("./target/magnum.log"))
+
   val config = ConfigFactory.load("test.conf")
   val store = Store(config)
   println("*** Store open.")

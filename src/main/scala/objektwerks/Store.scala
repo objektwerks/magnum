@@ -94,3 +94,6 @@ private final class Delegate():
 
   def listTodos(spec: Spec[Todo])(using DbCon): Vector[Todo] =
     todoRepo.findAll(spec)
+
+  def listCompletedTodos()(using DbCon): Vector[Todo] =
+    todoRepo.completedTodosQuery.run()

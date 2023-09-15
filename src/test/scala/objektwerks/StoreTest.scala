@@ -32,11 +32,16 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
 
     listTodos().length shouldBe 1
 
+    val secondTodo =addTodo( TodoBuilder(task = "mow yard") )
+    secondTodo.id shouldBe 2
+
     deleteTodo(updatedTodo)
-
     todoExistsById(todo.id) shouldBe false
-
     findTodoById(todo.id) shouldBe None
+
+    deleteTodo(secondTodo)
+    todoExistsById(secondTodo.id) shouldBe false
+    findTodoById(secondTodo.id) shouldBe None
 
     listTodos().length shouldBe 0
 

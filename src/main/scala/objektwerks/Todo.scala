@@ -5,9 +5,9 @@ import com.augustnagro.magnum.{DbCodec, H2DbType, Id, NullOrder, Repo, SortOrder
 import java.time.Instant
 
 enum OrderBy(spec: Spec[Todo]):
-  case task extends OrderBy( Spec[Todo].orderBy("task", SortOrder.Asc, NullOrder.Last) )
-  case created extends OrderBy( Spec[Todo].orderBy("created", SortOrder.Desc, NullOrder.Last) )
-  case completed extends OrderBy( Spec[Todo].orderBy("completed", SortOrder.Asc, NullOrder.Last) )
+  case TaskAsc extends OrderBy( Spec[Todo].orderBy("task", SortOrder.Asc, NullOrder.Last) )
+  case CreatedDesc extends OrderBy( Spec[Todo].orderBy("created", SortOrder.Desc, NullOrder.Last) )
+  case CompletedAsc extends OrderBy( Spec[Todo].orderBy("completed", SortOrder.Asc, NullOrder.Last) )
 
   def todoSpec(): Spec[Todo] = spec
 

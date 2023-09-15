@@ -38,7 +38,7 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
     countTodos() shouldBe 2
     listTodos().length shouldBe 2
 
-    listTodos(OrderBy.task).head.task shouldBe "mow yard"
+    listTodos(OrderBy.TaskAsc).head.task shouldBe "mow yard"
 
     deleteTodo(updatedTodo)
     todoExistsById(todo.id) shouldBe false

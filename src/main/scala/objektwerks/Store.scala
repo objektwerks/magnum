@@ -11,8 +11,6 @@ import org.h2.jdbcx.JdbcConnectionPool
 
 import scala.util.Using
 
-import objektwerks.Todo.OrderBy
-
 private object Store:
   def createDataSource(config: Config): DataSource =
     val ds = JdbcConnectionPool.create(

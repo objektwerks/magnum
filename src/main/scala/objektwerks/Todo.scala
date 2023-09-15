@@ -13,6 +13,10 @@ object Todo:
     .orderBy("task", SortOrder.Asc, NullOrder.Last)
     .build
 
+  val orderByCreatedSpec = Spec[Todo]
+    .orderBy("created", SortOrder.Desc, NullOrder.Last)
+    .build
+
   val info = TableInfo[TodoBuilder, Todo, Int]
 
   def epochSecond(): Long = Instant.now.getEpochSecond

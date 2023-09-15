@@ -18,7 +18,7 @@ object Todo:
 
   val info = TableInfo[TodoBuilder, Todo, Int]
   
-  val completedTasksQuery = sql"SELECT ${info.all} FROM $info WHERE ${info.completed} > 0".query
+  val completedTodosQuery = sql"SELECT ${info.all} FROM $info WHERE ${info.completed} > 0".query[Todo]
 
   def epochSecond(): Long = Instant.now.getEpochSecond
   def toInstant(epochSecond: Long): Instant = Instant.ofEpochSecond(epochSecond)

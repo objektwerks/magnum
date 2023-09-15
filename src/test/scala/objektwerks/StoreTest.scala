@@ -6,6 +6,8 @@ import org.scalatest.BeforeAndAfterAll
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
+import objektwerks.Todo.OrderBy
+
 final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
   val config = ConfigFactory.load("test.conf")
   val store = Store(config)
@@ -75,5 +77,10 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
 
   def listTodos(): Vector[Todo] =
     val todos = store.listTodos()
+    println(s"*** List Todos: ${todos.toString}")
+    todos
+
+  def listTodos(orderBy: OrderBy): Vector[Todo] =
+    val todos = store.listTodos(orderBy)
     println(s"*** List Todos: ${todos.toString}")
     todos

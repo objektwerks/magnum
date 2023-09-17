@@ -9,7 +9,7 @@ enum OrderBy(spec: Spec[Todo]):
   case CreatedDesc extends OrderBy( Spec[Todo].orderBy("created", SortOrder.Desc, NullOrder.Last) )
   case CompletedAsc extends OrderBy( Spec[Todo].orderBy("completed", SortOrder.Asc, NullOrder.Last) )
 
-  def todoSpec(): Spec[Todo] = spec
+  def getSpec(): Spec[Todo] = spec
 
 object Todo:
   given taskOrdering: Ordering[Todo] = Ordering.by[Todo, String](t => t.task)

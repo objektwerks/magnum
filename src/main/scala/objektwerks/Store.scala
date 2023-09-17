@@ -64,7 +64,7 @@ final class Store(config: Config):
 
   def listTodos(orderBy: OrderBy): Vector[Todo] =
     connect(ds):
-      delegate.listTodos(orderBy.todoSpec())
+      delegate.listTodos(orderBy.getSpec())
 
   def listCompletedTodos(): Vector[Todo] =
     connect(ds):

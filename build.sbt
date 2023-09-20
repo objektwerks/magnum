@@ -16,4 +16,3 @@ libraryDependencies ++= {
 scalacOptions ++= Seq(
   "-Wunused:all"
 )
-fork in run := true

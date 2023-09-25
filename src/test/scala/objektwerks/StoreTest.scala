@@ -12,7 +12,7 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
   val rootLogger = Logger.getLogger("")
   rootLogger.setLevel(Level.ALL)
   rootLogger.addHandler( FileHandler("./target/magnum.log") )
-  // XML log output!!! Yikes!!! Logback support, please!!! :)
+  // XML log output! Yikes! Logback support, please! :)
 
   val config = ConfigFactory.load("test.conf")
   val store = Store(config)
@@ -22,7 +22,7 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
     store.close()
     println("*** Store closed.")
 
-  test("store") {
+  test("store"):
     countTodos() shouldBe 0
     listTodos().length shouldBe 0
 
@@ -61,7 +61,6 @@ final class StoreTest extends AnyFunSuite with Matchers with BeforeAndAfterAll:
 
     countTodos() shouldBe 0
     listTodos().length shouldBe 0
-  }
 
   def countTodos(): Long =
     val count = store.countTodos()

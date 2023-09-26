@@ -29,7 +29,8 @@ private object Store:
 
 final class Store(config: Config):
   private val ds: DataSource = Store.createDataSource(config)
-  private val delegate = Delegate()
+  private val todoRepo = TodoRepo()
+  private val delegate = Delegate(todoRepo)
 
   def close(): Unit =
     ds.asInstanceOf[JdbcConnectionPool].dispose()
@@ -70,9 +71,7 @@ final class Store(config: Config):
     connect(ds):
       delegate.listCompletedTodos()
 
-private final class Delegate():
-  private val todoRepo = TodoRepo()
-
+private final class Delegate(todoRepo: TodoRepo):
   def countTodos()(using DbCon): Long =
     todoRepo.count
 

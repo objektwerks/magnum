@@ -3,8 +3,7 @@ package objektwerks
 import com.augustnagro.magnum.{connect, DbCon, DbTx, Spec, transact}
 import com.typesafe.config.Config
 
-import java.nio.file.Files
-import java.nio.file.Path
+import java.nio.file.{Files, Path}
 import javax.sql.DataSource
 
 import org.h2.jdbcx.JdbcConnectionPool

@@ -1,6 +1,6 @@
 Magnum
 ------
->Magnum feature test and performance benchmark against H2 and Scala 3.
+>Magnum feature test and performance benchmark against H2 using Scala 3.
 
 Build
 -----

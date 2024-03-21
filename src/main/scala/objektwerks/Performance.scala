@@ -17,7 +17,7 @@ object Performance:
 @Warmup(iterations = 10)
 @Measurement(iterations = 10)
 @Fork(1)
-final class Performance():
+class Performance(): // This class can't be final!
   import Performance.store
 
   var todo = Todo(0, "", 0, 0)

@@ -7,7 +7,7 @@ scalaVersion := "3.5.0"
 libraryDependencies ++= {
   Seq(
     "com.augustnagro" %% "magnum" % "1.2.1",
-    "com.h2database" % "h2" % "2.3.230",
+    "com.h2database" % "h2" % "2.3.232",
     "com.typesafe" % "config" % "1.4.3",
     "ch.qos.logback" % "logback-classic" % "1.5.6",
     "org.scalatest" %% "scalatest" % "3.2.19" % Test

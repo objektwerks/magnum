@@ -6,7 +6,7 @@ version := "0.1-SNAPSHOT"
 scalaVersion := "3.5.1"
 libraryDependencies ++= {
   Seq(
-    "com.augustnagro" %% "magnum" % "1.2.1",
+    "com.augustnagro" %% "magnum" % "1.3.0",
     "com.h2database" % "h2" % "2.3.232",
     "com.typesafe" % "config" % "1.4.3",
     "ch.qos.logback" % "logback-classic" % "1.5.8",

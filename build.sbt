@@ -3,7 +3,7 @@ enablePlugins(JmhPlugin)
 name := "magnum"
 organization := "objektwerks"
 version := "0.1-SNAPSHOT"
-scalaVersion := "3.7.2-RC1"
+scalaVersion := "3.7.2-RC2"
 libraryDependencies ++= {
   Seq(
     "com.augustnagro" %% "magnum" % "2.0.0-M2",
